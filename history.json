@@ -1,0 +1,252 @@
+[
+  {
+    "users": [
+      [
+        {
+          "Value": "9",
+          "Suit": "spades"
+        },
+        {
+          "Value": "6",
+          "Suit": "spades"
+        }
+      ],
+      [
+        100000
+      ],
+      [],
+      [],
+      [],
+      [
+        14
+      ],
+      [
+        false
+      ]
+    ],
+    "dealerhand": [
+      {
+        "Value": "8",
+        "Suit": "clubs"
+      }
+    ],
+    "status": false,
+    "cardcountplayer": 15,
+    "cardcountdealer": 8
+  },
+  {
+    "users": [
+      [
+        {
+          "Value": "4",
+          "Suit": "hearts"
+        },
+        {
+          "Value": "3",
+          "Suit": "clubs"
+        }
+      ],
+      [
+        100000
+      ],
+      [],
+      [],
+      [],
+      [
+        14
+      ],
+      [
+        false
+      ]
+    ],
+    "dealerhand": [
+      {
+        "Value": "K",
+        "Suit": "spades"
+      }
+    ],
+    "status": false,
+    "cardcountplayer": 7,
+    "cardcountdealer": 10
+  },
+  {
+    "users": [
+      [
+        {
+          "Value": "4",
+          "Suit": "hearts"
+        },
+        {
+          "Value": "3",
+          "Suit": "clubs"
+        },
+        {
+          "Value": "2",
+          "Suit": "hearts"
+        }
+      ],
+      [
+        100000
+      ],
+      [],
+      [],
+      [],
+      [
+        14
+      ],
+      [
+        false
+      ]
+    ],
+    "dealerhand": [
+      {
+        "Value": "K",
+        "Suit": "spades"
+      }
+    ],
+    "status": false,
+    "cardcountplayer": 9,
+    "cardcountdealer": 10
+  },
+  {
+    "users": [
+      [
+        {
+          "Value": "4",
+          "Suit": "hearts"
+        },
+        {
+          "Value": "3",
+          "Suit": "clubs"
+        },
+        {
+          "Value": "2",
+          "Suit": "hearts"
+        },
+        {
+          "Value": "A",
+          "Suit": "spades"
+        }
+      ],
+      [
+        100000
+      ],
+      [],
+      [],
+      [],
+      [
+        14
+      ],
+      [
+        false
+      ]
+    ],
+    "dealerhand": [
+      {
+        "Value": "K",
+        "Suit": "spades"
+      }
+    ],
+    "status": false,
+    "cardcountplayer": 20,
+    "cardcountdealer": 10
+  },
+  {
+    "users": [
+      [
+        {
+          "Value": "4",
+          "Suit": "hearts"
+        },
+        {
+          "Value": "3",
+          "Suit": "clubs"
+        },
+        {
+          "Value": "2",
+          "Suit": "hearts"
+        },
+        {
+          "Value": "A",
+          "Suit": "spades"
+        },
+        {
+          "Value": "J",
+          "Suit": "hearts"
+        }
+      ],
+      [
+        100000
+      ],
+      [],
+      [],
+      [],
+      [
+        14
+      ],
+      [
+        false
+      ]
+    ],
+    "dealerhand": [
+      {
+        "Value": "K",
+        "Suit": "spades"
+      }
+    ],
+    "status": false,
+    "cardcountplayer": 20,
+    "cardcountdealer": 10
+  },
+  {
+    "users": [
+      [
+        {
+          "Value": "4",
+          "Suit": "hearts"
+        },
+        {
+          "Value": "3",
+          "Suit": "clubs"
+        },
+        {
+          "Value": "2",
+          "Suit": "hearts"
+        },
+        {
+          "Value": "A",
+          "Suit": "spades"
+        },
+        {
+          "Value": "J",
+          "Suit": "hearts"
+        },
+        {
+          "Value": "8",
+          "Suit": "diamonds"
+        }
+      ],
+      [
+        100000
+      ],
+      [],
+      [],
+      [],
+      [
+        14
+      ],
+      [
+        false
+      ]
+    ],
+    "dealerhand": [
+      {
+        "Value": "K",
+        "Suit": "spades"
+      }
+    ],
+    "status": true,
+    "cardcountplayer": 28,
+    "cardcountdealer": 10
+  }
+]

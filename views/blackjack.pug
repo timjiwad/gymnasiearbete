@@ -1,0 +1,64 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    
+    script(defer,src='https://unpkg.com/htmx.org@1.8.4')
+    script(defer,src='https://cdn.socket.io/4.8.1/socket.io.min.js')
+    script(defer,src='client.js')
+
+    title Blackjack
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color:#252525;
+        color: grey;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      .game-container {
+        margin-top: 50px;
+      }
+      .buttons {
+        margin-top: 20px;
+        color:grey;
+      }
+      button {
+        background-color:#252525;
+        
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color:#252525;
+      }
+    link(rel="stylesheet" href="/style.css")
+  
+  body
+    .game-container
+      h1 Blackjack
+      #game-info
+        div#playerhand
+        div#total1
+        div#dealerhand
+        div#total2
+        div#lenght
+        div#buster
+      .buttons
+        button#startgame ____ start_game___
+        button#button.button clickme
+        div#countdown= countdown
+        
+        
+        
+
+
+
+
+        

@@ -1,0 +1,20 @@
+
+fix errors in client browser
+
+
+too many listeners for insuarnace??? (test it out)
+
+
+make so you cant hit after double
+
+
+
+fix reposetory in github and markdown
+
+
+
+
+fortsätt med md client + pug
+
+
+

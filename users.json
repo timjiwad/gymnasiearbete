@@ -1,0 +1,18 @@
+[
+  {
+    "username": "timjiwad1@hotmail.com",
+    "password": "$2a$12$zVBPlkqQK65npUCIE4pOie3xzy93RsMgz8VS1BzhJdUcjea76oCra",
+    "id": "id_1743165491082",
+    "uuid": "0195dcc2-878a-762b-a9a5-b756eaf95331",
+    "balance": 1000,
+    "games_played": 0
+  },
+  {
+    "username": "fekratjiwad@hotmail.com",
+    "password": "$2a$12$IGOhDjpyfIA31hoKazBDJu6kcgN9zSfKlagRUvQxpyWp3m6vkjmZ.",
+    "id": "id_1743515117056",
+    "uuid": "0195f199-6601-72ee-8a0a-a171e46b430f",
+    "balance": 99900,
+    "games_played": 15
+  }
+]

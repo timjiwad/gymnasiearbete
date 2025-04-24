@@ -1,0 +1,111 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+    script(defer,src='https://unpkg.com/htmx.org@1.8.4')
+    script(defer,src='https://cdn.socket.io/4.8.1/socket.io.min.js')
+    script(src='/socket.io/socket.io.js')
+
+    script(defer,src="/client.js")
+    title Blackjack
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color:#252525;
+        color: grey ;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      .game-container {
+        margin-top: 50px;
+      }
+      .buttons {
+        margin-top: 20px;
+        color: grey ;
+
+      }
+      button {
+        background-color:#252525;
+        border: none;
+        padding: 10px 20px;
+        margin: 0px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color:#252525;
+      }
+      p{
+        margin: 0px;
+        padding: 0px;
+        text-decoration: underline black;
+      }
+      #chat-messages.chat-messages {
+        position: absolute;
+        bottom: 0;
+        height: 300px;
+        overflow-y: scroll;
+        background-color: #252525;
+        color: white;
+      }
+      
+    link(rel="stylesheet" href="/style.css")
+
+  body
+    .game-container
+      a(href="/" style="background-color: #252525;,font-size: 2em;") Blackjack
+      p#info
+
+      .buttons
+        button#start start
+        button#hitplayerhand hit
+        button#stay stay
+        br
+        p#winner winner
+        div#status "Waiting..."
+        br
+        p playerhand
+        div#playerhand "Waiting..."
+        br
+        p player card value sum
+        div#total1 "Waiting..."
+        br
+        p dealerhand
+        div#dealerhand "Waiting..."
+        br
+        p dealer card value sum
+        div#total2 "Waiting..."
+        br
+        p balance
+        div#balance "Waiting..."
+        br
+        p time limit
+        div.time "Waiting..."
+        input#input(type='number')
+        button#input_button confirm bet
+        br
+        button#insuranceyes insurance yes
+        button#insuranceno insurance no
+        br
+        button#double double
+        br
+        
+        footer
+        #chat-container
+          #chat-header
+            h3 Game Chat
+          #chat-messages(style="overflow-y: scroll; max-height: 400px;")
+          #chat-input-container
+            input#chat-input(type='text' placeholder='Type a message...')
+            button#chat-send Send
+        
+        
+          
+        
+          
+
+        
