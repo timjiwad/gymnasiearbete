@@ -1,23 +1,38 @@
 # Dokumentation för Tim Jiwads gymnasiearbete
 
 ## Innehållsförteckning
-# 📚 Snabblänkar / Link Tree
+#  Snabblänkar / Link Tree
 
+ [📚 Snabblänkar / Link Tree](#-snabblänkar--link-tree)
+- [Dokumentation för Tim Jiwads gymnasiearbete](#dokumentation-för-tim-jiwads-gymnasiearbete)
 - [1. Introduktion](#1-introduktion)
 - [2. Teknisk Översikt](#2-teknisk-översikt)
 - [3. Funktionalitet](#3-funktionalitet)
   - [3.1 Initiering](#31-initiering)
   - [3.2 Utility-funktioner](#32-utility-funktioner)
   - [3.3 Autentisering](#33-autentisering)
-    - [3.3.1 Register](#331-register)
-    - [3.3.2 Login](#332-login)
-    - [3.3.3 Logout](#333-logout)
-- [4. Blackjack](#4-blackjack)
-  - [4.1 Savefile](#41-savefile)
-  - [4.2 Initilise blackjack](#42-initilise-blackjack)
-    - [4.2.1 Initilise dealer](#421-initilise-dealer)
-- [5. Installation och Körning](#8-installation-och-körning)
-- [6. Säkerhet](#7-säkerhet)
+    - [3.3.1 register](#331-register)
+    - [3.3.2 login](#332-login)
+    - [3.3.3 logout](#333-logout)
+- [4. blackjack](#4-blackjack)
+  - [4.1 savefile](#41-savefile)
+  - [4.2 initilise blackjack](#42-initilise-blackjack)
+    - [4.2.1 initilise dealer](#421-initilise-dealer)
+    - [4.2.2 initilise deck](#422-initilise-deck)
+  - [4.3 Spelrundor och socket.io](#43-spelrundor-och-socketio)
+    - [4.3.1 resetGame](#431-resetgame)
+    - [4.3.2 startNewRound](#432-startnewround)
+    - [4.3.3 socket.io-kommunikation](#433-socketio-kommunikation)
+  - [4.4 Spelmekanik och händelser](#44-spelmekanik-och-händelser)
+- [5.1 chat backend](#51-saveaction)
+- [5.2 chat function](#52-chat-function)
+- [6. Client script.](#6-client-script)
+  - [6.1 init och timer](#61-init-och-timer)
+  - [6.2 spel logik](#62-spel-logik)
+  - [6.3 chat logik](#63-chat-logik)
+- [7. Pug och templates](#7-pug-och-templates)
+- [8. Installation och Körning](#8-installation-och-körning)
+- [9. Säkerhet](#9-säkerhet)
 
 
 
@@ -1324,7 +1339,7 @@ Koden lyssnar på eventet ```"savegame"``` från klienten. När detta event tas 
 
 
 
-## 5 chat function
+## 5.2 chat function
 
 ```js
   const CHAT_FILE = 'chat_messages.json';
@@ -1965,16 +1980,156 @@ socket.on('user event', (eventMsg) => {
 
 
 
-## 7. Pug och templates
+## 7. Pug
+```jade
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
 
+    script(defer,src='https://unpkg.com/htmx.org@1.8.4')
+    script(defer,src='https://cdn.socket.io/4.8.1/socket.io.min.js')
+    script(src='/socket.io/socket.io.js')
 
+    script(defer,src="/client.js")
+    title Blackjack
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color:#252525;
+        color: grey ;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      .game-container {
+        margin-top: 50px;
+      }
+      .buttons {
+        margin-top: 20px;
+        color: grey ;
+
+      }
+      button {
+        background-color:#252525;
+        border: none;
+        padding: 10px 20px;
+        margin: 0px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color:#252525;
+      }
+      p{
+        margin: 0px;
+        padding: 0px;
+        text-decoration: underline black;
+      }
+      #chat-messages.chat-messages {
+        position: absolute;
+        bottom: 0;
+        height: 300px;
+        overflow-y: scroll;
+        background-color: #252525;
+        color: white;
+      }
+      
+    link(rel="stylesheet" href="/style.css")
+
+  body
+    .game-container
+      a(href="/" style="background-color: #252525;,font-size: 2em;") Blackjack
+      p#info
+
+      .buttons
+        button#start start
+        button#hitplayerhand hit
+        button#stay stay
+        br
+        p#winner winner
+        div#status "Waiting..."
+        br
+        p playerhand
+        div#playerhand "Waiting..."
+        br
+        p player card value sum
+        div#total1 "Waiting..."
+        br
+        p dealerhand
+        div#dealerhand "Waiting..."
+        br
+        p dealer card value sum
+        div#total2 "Waiting..."
+        br
+        p balance
+        div#balance "Waiting..."
+        br
+        p time limit
+        div.time "Waiting..."
+        input#input(type='number')
+        button#input_button confirm bet
+        br
+        button#insuranceyes insurance yes
+        button#insuranceno insurance no
+        br
+        button#double double
+        br
+        
+        footer
+        #chat-container
+          #chat-header
+            h3 Game Chat
+          #chat-messages(style="overflow-y: scroll; max-height: 400px;")
+          #chat-input-container
+            input#chat-input(type='text' placeholder='Type a message...')
+            button#chat-send Send
+        
+ 
+```
+
+Denna mall beskriver strukturen och utseendet för hela Blackjack-spelet inklusive spelets UI och chattfunktionalitet. Nedan följer en genomgång av de viktigaste delarna:
+
+#### **Head-sektionen**
+- `doctype html` och `html(lang="en")`: Startar ett HTML5-dokument och anger språk.
+- `<head>` innehåller:
+  - `<meta charset="UTF-8">` och `<meta name="viewport"...>`: Standard för teckenkodning och mobilanpassning.
+  - **Script-taggar**:
+    - Laddar in htmx (för AJAX-liknande funktionalitet), socket.io (för realtidskommunikation), och din egen klientkod (`client.js`).
+  - `<title>`: Sätter sidans titel till "Blackjack".
+  - `<style>`: Innehåller CSS som styr utseendet för hela sidan, inklusive färger, knappar, layout och chat-fönstret.
+  - `<link rel="stylesheet" href="/style.css">`: Laddar en extern CSS-fil för ytterligare styling.
+
+#### **Body-sektionen**
+- `.game-container`: Huvudbehållare för spelet.
+  - `a(href="/"...)`: Länk tillbaka till startsidan, visas som "Blackjack" med anpassad stil.
+  - `p#info`: Tom paragraf för att visa information/statusmeddelanden.
+  - `.buttons`: Sektion för alla spelknappar och statusfält:
+    - `button#start`, `button#hitplayerhand`, `button#stay`: Knappar för att starta, dra kort och stanna i spelet.
+    - `p#winner`, `div#status`: Visar vinnare och aktuell status.
+    - Spelarens och dealerns hand och totalsummor visas med `div#playerhand`, `div#dealerhand`, `div#total1`, `div#total2`.
+    - `div#balance`: Visar spelarens saldo.
+    - `div.time`: Visar återstående tid för draget.
+    - `input#input` och `button#input_button`: Fält och knapp för att lägga insats.
+    - `button#insuranceyes`, `button#insuranceno`: Knappar för att välja försäkring (insurance).
+    - `button#double`: Knapp för att dubbla insatsen (double).
+  - **Footer/chat**:
+    - `#chat-container`: Innehåller chatten.
+      - `#chat-header h3`: Rubrik "Game Chat".
+      - `#chat-messages`: Behållare där alla chattmeddelanden visas, med scroll.
+      - `#chat-input-container`: Fält och knapp för att skriva och skicka chattmeddelanden.
+
+#### **CSS (i `<style>`)**
+- Definierar färger, typsnitt, marginaler, knapputseende, och gör chatten scrollbar och placerad längst ned.
 
 ## 8. Installation och Körning
-1. Klona projektet från https://github.com/Sniffo5/GymnasieArbetePublik <br>
+1. Klona projektet från https://github.com/timjiwad/gymnasiearbete <br>
 2. Installera beroende paket med ```npm i -y```<br>
 3. Starta servern med ```npm start```<br>
 
-## 7. Säkerhet
+## 9. Säkerhet
 
 Projektet har flera inbyggda säkerhetsåtgärder för att skydda användardata och förhindra attacker, särskilt vid registrering och inloggning.
 
