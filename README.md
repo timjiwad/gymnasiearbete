@@ -1970,7 +1970,7 @@ socket.on('user event', (eventMsg) => {
 
 
 ## 8. Installation och Körning
-1. Klona projektet från https://github.com/Sniffo5/GymnasieArbetePublik <br>
+1. Klona projektet från  https://github.com/timjiwad/gymnasiearbete <br>
 2. Installera beroende paket med ```npm i -y```<br>
 3. Starta servern med ```npm start```<br>
 
