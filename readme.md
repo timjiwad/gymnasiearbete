@@ -3,7 +3,7 @@
 ## Innehållsförteckning
 #  Snabblänkar / Link Tree
 
- [📚 Snabblänkar / Link Tree](#-snabblänkar--link-tree)
+ [Snabblänkar / Link Tree](#-snabblänkar--link-tree)
 - [Dokumentation för Tim Jiwads gymnasiearbete](#dokumentation-för-tim-jiwads-gymnasiearbete)
 - [1. Introduktion](#1-introduktion)
 - [2. Teknisk Översikt](#2-teknisk-översikt)
