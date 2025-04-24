@@ -1,7 +1,7 @@
 # Dokumentation för Tim Jiwads gymnasiearbete
 
 ## Innehållsförteckning
-# 📚 Snabblänkar / Link Tree
+
 
 - [1. Introduktion](#1-introduktion)
 - [2. Teknisk Översikt](#2-teknisk-översikt)
